@@ -24,8 +24,14 @@
 
 ### Contribuições
 
-Estamos continuamente melhorando o AutoDevSuite e encorajamos contribuições da comunidade. Se você deseja colaborar, sinta-se à vontade para abrir issues, enviar pull requests ou sugerir novas funcionalidades.
+Estamos continuamente melhorando o AutoDevSuite e encorajamos contribuições da comunidade. Se você deseja colaborar, sinta-se à vontade para abrir issues, enviar pull requests ou sugerir novas funcionalidades, o objetivo é uma ferramenta completa de apoio aos processo de desenvolvimento de software.
 
 ---
 
 O AutoDevSuite é a escolha ideal para desenvolvedores e equipes que buscam otimizar seu fluxo de trabalho, garantindo alta qualidade e eficiência no desenvolvimento de software.
+
+### Demonstração
+
+Veja a demonstração da aplicação [aqui](https://autodevsuite-bdd.streamlit.app/).
+
+
