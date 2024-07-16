@@ -18,11 +18,11 @@ prompt_template_br = "Você é um analista de teste, responsável pela criação
  e explique como usar o código."
 
 # Interface do Streamlit
-st.title("AutoDevSuite : BDD-based Test Generator")
-us = st.text_area("Enter US:")
-ca = st.text_area("Enter your gherkin-based acceptance criteria:")
-lp = st.text_input("Enter the programming language:")
-fw = st.text_input("Enter the framework:")
+st.title("AutoDevSuite : Gerador de testes baseados no BDD")
+us = st.text_area("Entre com sua históriade usuário:")
+ca = st.text_area("Entre com o seu teste de aceitação no formato gherkin:")
+lp = st.text_input("Qual a linguagem de programação você vai usar:")
+fw = st.text_input("Entre com o framework preferido:")
 
 prompt = PromptTemplate(
     input_variables=["us", "ca", "lp", "fw"],
