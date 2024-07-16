@@ -1,21 +1,20 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
 import streamlit as st
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 import os
 from dotenv import load_dotenv  
+
 load_dotenv()
 g_api_key = os.getenv("GOOGLE_API_KEY")
+
+from google.generativeai import ChatGoogleGenerativeAI  # Certifique-se de que a importação está correta
+
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", google_api_key=g_api_key)
 
-
-prompt_template_br= "Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário {us} \
+prompt_template_br = "Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário {us} \
  e nos critérios de aceites {ca} baseados no gherking, crie os testes unitários para a linguagem de programação {lp} \
  baseados no framework {fw} \
  e explique como usar o código"
-
-
-
 
 # Interface do Streamlit
 st.title("AutoDevSuite : BDD-based Test Generator")
@@ -26,11 +25,9 @@ fw = st.text_input("Enter the framework:")
 
 prompt = PromptTemplate(
     input_variables=["us", "ca", "lp", "fw"],
-    template=prompt_template
+    template=prompt_template_br
 )
 chain_1 = LLMChain(llm=llm, prompt=prompt)
-
-
 
 if st.button("Generate Unit Tests"):
     # Gera o resultado usando os valores de entrada
