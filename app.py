@@ -1,4 +1,5 @@
 import streamlit as st
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 import os
@@ -7,12 +8,9 @@ from dotenv import load_dotenv
 load_dotenv()
 g_api_key = os.getenv("GOOGLE_API_KEY")
 
-# Substitua pela importação correta da biblioteca que você está usando
-# Exemplo fictício:
-from google.generativeai.client import GoogleGenerativeAIClient
 
 # Inicialize a classe correta com a chave da API
-llm = GoogleGenerativeAIClient(api_key=g_api_key)
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", google_api_key=g_api_key)
 
 prompt_template_br = "Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário {us} \
  e nos critérios de aceites {ca} baseados no gherkin, crie os testes unitários para a linguagem de programação {lp} \
