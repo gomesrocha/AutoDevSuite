@@ -1,0 +1,1287 @@
+ID;User Story;Scenario 1;Scenario 2;Scenario 3;Prompt
+US1;"COMO gerente de um sistema
+QUERO Cadastrar usuários
+PARA Utilizar o sistema e conseguir cadastrar oportunidades.";"Menu - usuários
+Given o Sales Director ou Admin Partner
+When acionada a opção ""Usuários"" no menu
+Then o gerente tenha acesso a cadastrar novos usuários no sistema.";"Cadastrar novo usuário, usando o acesso pelo canal
+Given o Sales Director ou Admin Partner
+When acionado a opção ""Canais"" no menu 
+And apresentado a listagem dos canais que já foram cadastrados no sistema
+And selecione um canal
+Then realize o cadastro de novos usuários.";"Cadastro de usuários - comum
+Given o Sales Director ou Admin Partner
+When acessado a interface de ""Usuários""
+And acionado a opção de cadastrar novos usuários
+And o sistema apresenta a tela com campos para preencher
+Then realiza a operação com sucesso.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+""COMO gerente de um sistema
+QUERO Cadastrar usuários
+PARA Utilizar o sistema e conseguir cadastrar oportunidades.""
+e nos critérios de aceites 
+""
+Critério 1
+Given logado como Admin Partner
+When acionada a opção User no menu
+AND inserir o nome do usuario <Usuarios>
+AND inserir o email do usuario <email>
+AND inserir o canal do usuario <Canais>
+Then o gerente recebe uma informação de usuário cadastrado com sucessp
+AND o usuário recebe um email para criar sua senha
+
+Critério 2
+Given logado como Sales Director ou Admin Partner
+When acionado a opção <Canais> no menu 
+And apresentado a listagem dos canais que já foram cadastrados no sistema
+And selecione um canal
+AND clicar em adicionar usuário no canal
+AND inserir o nome do usuario <Usuarios>
+AND inserir o email do usuario <email>
+AND inserir o canal do usuario <Canais>
+Then o gerente recebe uma informação de usuário cadastrado com sucessp
+AND o usuário recebe um email para criar sua senha
+
+Critério 3
+Given o Sales Director
+When acessado a interface de <Usuários>
+And acionado a opção de cadastrar novos usuários
+And o sistema apresenta a tela com campos para preencher
+AND inserir o nome do usuario <Usuarios>
+AND inserir o email do usuario <email>
+Then o gerente recebe uma informação de usuário cadastrado com sucessp
+AND o usuário recebe um email para criar sua senha
+
+Example
+|Usuarios|email|Canais|
+|Joselito|joselito@canal1.com|Canal1|
+|Marcio|marcio@canal1.com|Canal1| 
+|Cintia|cintia@canal1.com|Canal2|
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US2;"COMO usuário com permissionamento a lista de canais
+QUERO poder utilizar filtros na lista
+PARA realizar busca de forma mais objetiva.";"Busca
+Given o Sales Director ou Admin Partner
+When escrevendo algo no campo de busca
+Then o sistema apresenta a listagem com os dados conforme a busca do usuário.";"Ordenação
+Given o Sales Director ou Admin Partner
+When acionado a opção de ordenação alfabética ou por recentes
+Then o sistema ordenar conforme selecionado pelo usuário.";"Tag de filtro
+Given o Sales Director ou Admin Partner
+When acionado as opções de filtro
+Then o sistema apresenta as tags que foram geradas de acordo com o filtro e a listagem com as informações.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+""COMO usuário com permissionamento a lista de canais
+QUERO poder utilizar filtros na lista
+PARA realizar busca de forma mais objetiva.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o <perfil>
+When escrevendo algo no campo de busca <texto>
+Then o sistema apresenta a listagem com os dados conforme a busca do usuário <msg>.
+
+Critério 2
+Given o <perfil>
+When acionado a opção de ordenação alfabética ou por recentes
+Then o sistema ordenar conforme selecionado pelo usuário.
+
+Critério 3
+Given o Sales Director ou Admin Partner
+When acionado as opções de filtro
+Then o sistema apresenta as tags que foram geradas de acordo com o filtro e a listagem com as informações.
+
+Examples>
+|perfil|texto|msg|
+|director|cli|clientes|
+|admin|prod|produtos|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US3;"COMO Gerencia do Sistema
+QUERO visualizar informações dos perfis
+PARA uma melhor tomada de decisão viabilizando os permissionamentos.";"Perfil
+Given o Sales Director ou Admin Partner
+When acionado o menu ""Administração de Perfil""
+Then o sistema apresenta a tela com os perfis cadastrados no sistema.";"Visualização do perfil - Dados do perfil
+Given o Sales Director ou Admin Partner
+When selecionando em um perfil
+Then o sistema deve apresentar o nome do perfil, descrição e cor de tag conforme feito no cadastro do perfil.";"Visualização do perfil - Quantidade de usuários
+Given o Sales Director ou Admin Partner
+When selecionando em um perfil
+Then o sistema deve apresentar a quantidade de usuários que foram vinculados a esse perfil.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+""COMO Gerencia do Sistema
+QUERO visualizar informações dos perfis
+PARA uma melhor tomada de decisão viabilizando os permissionamentos.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o <perfil>
+When acionado o menu Administração de Perfil
+Then o sistema apresenta a tela com os perfis cadastrados no sistema.
+
+Critério 2
+Given o <perfil>
+When selecionando meu perfil
+Then o sistema deve apresentar o nome do perfil, descrição e cor de tag conforme feito no cadastro do perfil
+
+
+Critério 3
+Given o <perfil>
+When selecionando um perfil <tipo>
+Then o sistema deve apresentar a quantidade <qtd> de usuários que foram vinculados a esse perfil.
+
+Examples
+|perfil|tipo|qtd|
+|director|diretor|2|
+|director|admin|50|
+|admin|admin|50|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US4;"COMO Dono da oportunidade
+QUERO realizar solicitações
+PARA ganhar desconto.";"Solicitação
+Given Dono da oportunidade
+When acessando a oportunidade após estar aprovada
+And abrindo a tab da solicitação
+And selecionando o produto que seja o desconto
+And justificando o motivo da solicitação
+Then o sistema irá enviar a notificação ao Sales director e deixará a solicitação com status de aguardando analise.";"Aprovando a solicitação
+Given Sales Director
+When recebendo a notificação da solicitação por e-mail
+And acessando a oportunidade
+And aprovando a solicitação
+And adicionando o valor que deseja dar o desconto e salvando a informação
+Then o sistema aplica o desconto extra por produto.";"Reprovando a solicitação
+Given Sales Director
+When acessando a oportunidade
+And clicando em reprovar a solicitação e justificando o motivo
+Then o sistema irá apresentar uma notificação dentro da oportunidade, com o motivo da reprovação e o status da solicitação.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Dono da oportunidade
+QUERO realizar solicitações
+PARA ganhar desconto.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given Dono da oportunidade
+When acessando a oportunidade após estar aprovada
+And abrindo a tab da solicitação
+And selecionando o produto que seja o desconto
+And adicionando a justigicativa preciso de desconto, pois estou no meio de uma licitação
+And enviando a solicitação
+Then o sistema irá enviar a notificação ao Sales director e deixará a solicitação com status de aguardando analise.
+
+Critério 2
+Given Sales Director
+When recebendo a notificação da solicitação por e-mail
+And acessando a oportunidade
+And aprovando a solicitação
+And adicionando o valor que deseja dar o desconto e salvando a informação
+Then o sistema aplica o desconto extra por produto.
+
+
+Critério 3
+Given Sales Director
+When acessando a oportunidade
+And clicando em reprovar a solicitação e justificando o motivo
+Then o sistema irá apresentar uma notificação dentro da oportunidade, com o motivo da reprovação e o status da solicitação.
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US5;"COMO usuário de gerencia do Sistema
+QUERO definir os níveis de acesso dos usuários
+PARA conceder o permissionamento do usuário no sistema com base nas atividades e rotinas.";"Criando um perfil
+Given que o Sales Director ou Admin Partner
+When acionado o menu ""Administração de Perfil""
+And selecionado a opção de criar novo
+And preenchendo os campos solicitados
+Then o sistema criará um novo perfil.";"Definindo o acesso
+Given que o Sales Director ou Admin Partner
+When clicando na opção de cadastrar novo perfil
+And selecionando quais as funcionalidades e permissionamentos do perfil
+Then o sistema irá salvar os dados, permitindo que os usuários daquele perfil, realize as ações que foram definidas.";"Perfil Padrão
+Given que o Sales Director
+When acessando os perfis
+Then o sistema deve apresentar os perfis que são padrão do sistema (Admin Partner e Sales Director).";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerencia do Sistema
+QUERO definir os níveis de acesso dos usuários
+PARA conceder o permissionamento do usuário no sistema com base nas atividades e rotinas.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que o Sales Director ou Admin Partner
+When acionado o menu Administração de Perfil
+And selecionado a opção de criar novo
+And preenchendo os campos perfil <perfil>
+Then o sistema criará um novo perfil e exibira <perfil> criado com sucesso.
+
+Critério 2
+Given que o Sales Director ou Admin Partner
+When clicando na opção de cadastrar novo perfil
+And selecionando quais as funcionalidades <funcionalidade> e permissionamentos do perfil <perfil>
+Then o sistema irá salvar os dados, permitindo que os usuários daquele perfil, realize as ações que foram definidas e exibira uma mensagem <perfil> modificado.
+
+
+Critério 3
+Given que o Sales Director
+When acessando os perfis
+Then o sistema deve apresentar os perfis que são padrão do sistema (Admin Partner e Sales Director).
+
+Examples:
+|perfil|funcionalidade|
+|vendedor|CUL|
+|coordenadorvendas|CRUD|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US6;"COMO bancário
+QUERO ter acesso ao sistema
+PARA conseguir aprovar empréstimos.";"Aprovando empréstimo
+Given que sou o bancário
+When cliente possui crédito financeiro
+And não tem pendências em seu CPF
+Then posso aprovar o empréstimo";"Empréstimo negado
+Given que sou o bancário
+When cliente solicita empréstimo
+And possui nome negativado
+Then empréstimo não pode ser deferido";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""""COMO bancário
+QUERO ter acesso ao sistema
+PARA conseguir aprovar empréstimos.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que sou o bancário
+When cliente possui crédito financeiro <perfil>
+And não tem pendências em seu CPF
+Then posso aprovar o empréstimo <func>
+
+Critério 2
+Given que sou o bancário
+When cliente solicita empréstimo <perfil>
+And possui nome negativado
+Then empréstimo não pode ser deferido <func>
+
+Examples:
+|perfil|funcionalidade|
+|cliente|aprov|
+|pj|reprov|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US7;"COMO usuário de gerencia do Sistema
+QUERO uma listagem dos canais
+PARA que seja possível visualizar e gerenciar os canais que já foram cadastrados no sistema.";"Menu - Sales Director
+Given que o Sales Director
+When acionado o menu ""Canais""
+Then o sistema apresenta a tela com listagem com todos os canais cadastrados no sistema. ";"Menu - Admin Partner
+Given que o Admin Partner
+When acionado o menu ""Canais""
+Then o sistema apresenta a tela com listagem com as filiais do canal que foram cadastrados no sistema. ";"Filtros 
+Given que o Sales Director ou Admin Partner
+When acionado as opções de filtrar
+Then o sistema apresenta a listagem conforme seleção do filtro.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerencia do Sistema
+QUERO uma listagem dos canais
+PARA que seja possível visualizar e gerenciar os canais que já foram cadastrados no sistema.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que o Sales Director
+When acionado o menu """"Canais"""" <menu>
+Then o sistema apresenta a tela com listagem com todos os canais cadastrados no sistema. <canal>
+
+Critério 2
+Given que o Admin Partner
+When acionado o menu """"Canais"""" <menu>
+Then o sistema apresenta a tela com listagem com as filiais do canal que foram cadastrados no sistema. <filial>
+
+Critério 3 
+Given que o Sales Director ou Admin Partner <perfil>
+When acionado as opções de filtrar <filtro>
+Then o sistema apresenta a listagem conforme seleção do filtro.
+
+Examples:
+|menu|canal|filial|filtro|
+|cadastros|estados|sergipe|admin|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US8;"COMO Gerencia do Sistema
+QUERO visualizar informações dos canais
+PARA uma melhor tomada de decisão";"Visualização de detalhes
+Given que Sales Director ou Admin Partner
+When acionado mais detalhes do canal
+Then o sistema apresentará a tela com todos os dados adicionados pelo usuário.";"Informações das oportunidades
+Given que Sales Director ou Admin Partner
+When acionado mais detalhes de um canal
+Then o sistema irá projetar dados das oportunidades em andamento, ganhas, perdidas e o total.";"Informações das oportunidades
+Given que Sales Director ou Admin Partner
+When acionado mais detalhes de um canal
+Then acessará uma listagem com todos os usuários vinculados ao canal.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Gerencia do Sistema
+QUERO visualizar informações dos canais
+PARA uma melhor tomada de decisão""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que Sales Director ou Admin Partner <perfil>
+When acionado mais detalhes do canal <filtro>
+Then o sistema apresentará a tela com todos os dados adicionados pelo usuário..
+
+Critério 2
+Given que Sales Director ou Admin Partner <perfil>
+When acionado mais detalhes de um canal <filtro>
+Then o sistema irá projetar dados das oportunidades em andamento, ganhas, perdidas e o total.
+
+Critério 3
+Given que Sales Director ou Admin Partner <perfil>
+When acionado mais detalhes de um canal <filtro>
+Then acessará uma listagem com todos os usuários vinculados ao canal
+
+Examples:
+|perfil|filtro|
+|admin|detalhes|
+|salesdirector|pesquisaavançada|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US9;"COMO usuário de gerência no sistema
+QUERO Editar os canais dentro do sistema
+PARA acompanhar e gerenciar.";"Editar cadastro de canal
+Given o Sales Director ou Admin Partner
+When acionado a opção editar, no cadastro do canal
+Then o sistema habilita a edição de campos do cadastro do canal.";"Salvando os dados
+Given o Sales Director ou Admin Partner
+When acionado a opção editar, no cadastro do canal
+And alterando dados
+Then o sistema permite que os dados sejam salvos e as informações fiquem registradas.";"Inativando um canal
+Given o Sales Director ou Admin Partner
+When acionado a opção editar
+And selecionando a opção ""Inativar""
+And confirmar a operação
+Then o canal fica sem acesso ao sistema.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerência no sistema
+QUERO Editar os canais dentro do sistema
+PARA acompanhar e gerenciar.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director ou Admin Partner <perfil>
+When acionado a opção editar, no cadastro do canal <opção>
+Then o sistema habilita a edição de campos do cadastro do canal.
+
+Critério 2
+Given o Sales Director ou Admin Partner <perfil>
+When acionado a opção editar, no cadastro do canal <opção>
+And alterando dados
+Then o sistema permite que os dados sejam salvos e as informações fiquem registradas.
+
+Critério 3
+Given o Sales Director ou Admin Partner <perfil>
+When acionado a opção editar <opção>
+And selecionando a opção """"Inativar""""
+And confirmar a operação
+Then o canal fica sem acesso ao sistema.
+
+Examples:
+|perfil|opção|
+|admin|editar|
+|salesdirector|invalidar|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US10;"COMO usuário de gerencia do Sistema
+POSSO Cadastrar usuários
+PARA Utilizar o sistema e conseguir cadastrar oportunidades";"Menu - usuários
+Given o Sales Director ou Admin Partner
+When acionado a opção ""Usuários"" no menu
+Then o gerente tenha acesso a cadastrar novos usuários no sistema.";"Cadastrar novo usuário, usando o acesso pelo canal
+Given o Sales Director ou Admin Partner
+When acionado a opção ""Canais"" no menu
+And apresentado a listagem dos canais que já foram cadastrados no sistema
+And selecione um canal
+Then realize o cadastro de novos usuários.";"Cadastro de usuários - comum
+Given o Sales Director ou Admin Partner
+When acessado a interface de ""Usuários"" 
+And acionado a opção de cadastrar novos usuários
+And o sistema apresenta a tela com campos para preencher
+Then realiza a operação com sucesso.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerencia do Sistema
+POSSO Cadastrar usuários
+PARA Utilizar o sistema e conseguir cadastrar oportunidades""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director ou Admin Partner <perfil>
+When acionado a opção """"Usuários"""" no menu <opção>
+Then o gerente tenha acesso a cadastrar novos usuários no sistema.
+
+Critério 2
+Given o Sales Director ou Admin Partner <perfil>
+When acionado a opção """"Canais"""" no menu <opção>
+And apresentado a listagem dos canais que já foram cadastrados no sistema
+And selecione um canal <opção>
+Then realize o cadastro de novos usuários.
+
+Critério 3
+Given o Sales Director ou Admin Partner <perfil>
+When acessado a interface de """"Usuários"""" 
+And acionado a opção de cadastrar novos usuários <perfil>
+And o sistema apresenta a tela com campos para preencher
+Then realiza a operação com sucesso.
+
+Examples:
+|perfil|opção|
+|admin|usuário|
+|salesdirector|canal|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US11;"COMO Usuário do Sistema
+QUERO Cadastrar meu acesso
+PARA ter o primeiro contato com o sistema e conseguir realizar as operações.";"Recebimento do link por e-mail
+Given o Sales Director
+When acionado a opção de cadastrar o usuário no sistema
+Then é enviado um link de primeiro acesso";"Link de primeiro acesso
+Given novo usuário do sistema
+When acessando o link recebido no e-mail
+Then será possível definir a senha";"Definindo senha
+Given novo usuário do sistema
+When informando a senha desejada
+And confirmando a senha
+And o sistema validando considerando os critérios de aceite da senha
+Then será possível salvar a senha";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Usuário do Sistema
+QUERO Cadastrar meu acesso
+PARA ter o primeiro contato com o sistema e conseguir realizar as operações.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director <perfil>
+When acionado a opção de cadastrar o usuário no sistema <opção>
+Then é enviado um link de primeiro acesso
+
+Critério 2
+Given novo usuário do sistema <perfil>
+When acessando o link recebido no e-mail
+Then será possível definir a senha
+
+Critério 3
+Given novo usuário do sistema <perfil>
+When informando a senha desejada
+And confirmando a senha
+And o sistema validando considerando os critérios de aceite da senha
+Then será possível salvar a senha
+
+Examples:
+|perfil|opção|
+|novousuário|novoperfil|
+|salesdirector|cadastrarnovousuario|
+|usuário|recuperarsenha|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US12;"COMO usuário de gerencia do Sistema
+QUERO visualizar os detalhes do cadastro do perfil
+PARA validar as configurações definidas no sistema.";"Acesso usuários - Sales Director
+Given o Sales Director
+When acionado o menu ""usuários""
+Then o sistema apresenta a tela com listagem com todos os usuários cadastrados no sistema.";"Acesso usuários - Admin Partner
+Given o Admin Partner
+When acionado o menu ""usuários""
+Then o sistema deve apresentar a listagem com os usuários cadastrados no sistema que são vinculados ao canal que ele pertence.";"Visualização
+Given o Sales director ou Admin Partner
+When selecionando um usuário
+Then o sistema apresenta os dados cadastrais e as oportunidades que o usuário registrou";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerencia do Sistema
+QUERO visualizar os detalhes do cadastro do perfil
+PARA validar as configurações definidas no sistema.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director <perfil>
+When acionado o menu ""usuários"" <opção>
+Then o sistema apresenta a tela com listagem com todos os usuários cadastrados no sistema.
+
+Critério 2
+Given o Admin Partner <perfil>
+When acionado o menu ""usuários"" <opção>
+Then o sistema deve apresentar a listagem com os usuários cadastrados no sistema que são vinculados ao canal que ele pertence.
+
+
+Critério 3
+Given o Sales director ou Admin Partner <perfil>
+When selecionando um usuário <opção>
+Then o sistema apresenta os dados cadastrais e as oportunidades que o usuário registrou
+
+Examples:
+|perfil|opção|
+|salesdirector|todosusuarios|
+|admin|usuariosfilial|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US13;"COMO usuário de gerencia
+QUERO realizar alterações no cadastro de um usuário
+PARA configurar de acordo com a necessidade do canal.";"Editar cadastro de usuários
+Given o Sales Director ou Admin Partner
+When acionado a opção editar cadastro do usuário
+Then o sistema permita a alterar os dados dos campos do cadastro do usuário.";"Inativar cadastro de usuários
+Given o Sales Director ou Admin Partner
+When acionado a opção de editar o cadastro
+And selecionado opção ""Inativar""
+Then o sistema inativa o usuário, retirando o acesso ao sistema.";"Ativar cadastro de usuários
+Given o Sales Director ou Admin Partner
+When acionado a opção de editar o cadastro
+And selecionado opção ""Ativar'
+And o cadastro estiver inativo
+Then o sistema Ativa o usuário, dando acesso ao sistema.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerencia
+QUERO realizar alterações no cadastro de um usuário
+PARA configurar de acordo com a necessidade do canal.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director ou Admin Partner <perfil>
+When acionado a opção editar cadastro do usuário <opção>
+Then o sistema permita a alterar os dados dos campos do cadastro do usuário.
+
+Critério 2
+Given o Sales Director ou Admin Partner <perfil>
+When acionado a opção de editar o cadastro <opção>
+And selecionado opção ""Inativar"" <opção>
+Then o sistema inativa o usuário, retirando o acesso ao sistema.
+
+
+Critério 3
+Given o Sales Director ou Admin Partner <perfil>
+When acionado a opção de editar o cadastro <opção>
+And selecionado opção ""Ativar' <opção>
+And o cadastro estiver inativo
+Then o sistema Ativa o usuário, dando acesso ao sistema.
+
+Examples:
+|perfil|opção|
+|salesdirector|editar|
+|admin|inativar|
+|salesdirector|ativar|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US14;"COMO usuário do Sistema 
+QUERO acessar a tela inicial e visualizar de forma rápida algumas ações que podem ser feitas no sistema
+PARA aprimorar e otimizar as atividades.";"Board
+Given o usuário do sistema
+When acessando a tela inicial do sistema
+Then sistema deve apresentar a opção de direcionamento para a interface de Novas oportunidades.";"Board
+Given o usuário do sistema
+When acessando a tela inicial do sistema
+Then interface deve apresentar menus de acesso das funcionalidades do sistema";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário do Sistema 
+QUERO acessar a tela inicial e visualizar de forma rápida algumas ações que podem ser feitas no sistema
+PARA aprimorar e otimizar as atividades.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o usuário do sistema <usuário>
+When acessando a tela inicial do sistema
+Then sistema deve apresentar a opção de direcionamento para a interface de Novas oportunidades. <opção>
+
+Critério 2
+Given o usuário do sistema <usuário>
+When acessando a tela inicial do sistema
+Then interface deve apresentar menus de acesso das funcionalidades do sistema <opção>
+
+
+Examples:
+|usuário|opção|
+|valter|novasoportunidades|
+|antonio|faleconosco|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US15;"COMO usuário de gerencia do Sistema
+QUERO uma lista de usuários
+PARA que seja possível visualizar e gerenciar os usuários que ja foram cadastrados no sistema.";"Acesso usuários pelo gerente
+Given o Sales Director
+When acionado o menu ""usuários""
+Then o sistema apresenta a tela com listagem com todos os usuários cadastrados no sistema.";"Acesso canais pelo Sales Director
+Given que o Sales Director
+When acionado o menu ""Canais""
+And selecionado um canal
+Then o sistema deve apresentar a listagem com os usuários cadastrados no sistema que são vinculados a esse canal.";"Acesso usuários pelo Admin Partner
+Given que o Admin Partner
+When acionado o menu ""usuários""
+Then o sistema apresenta a tela com listagem com todos os usuários cadastrados no canal que ele pertence.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerencia do Sistema
+QUERO uma lista de usuários
+PARA que seja possível visualizar e gerenciar os usuários que ja foram cadastrados no sistema.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director <perfil>
+When acionado o menu ""usuários"" <menu>
+Then o sistema apresenta a tela com listagem com todos os usuários cadastrados no sistema.
+
+Critério 2
+Given que o Sales Director <perfil>
+When acionado o menu ""Canais"" <menu>
+And selecionado um canal
+Then o sistema deve apresentar a listagem com os usuários cadastrados no sistema que são vinculados a esse canal.
+
+Critério 3
+Given que o Admin Partner <perfil>
+When acionado o menu ""usuários"" <menu>
+Then o sistema apresenta a tela com listagem com todos os usuários cadastrados no canal que ele pertence.
+
+Examples:
+|perfil|menu|
+|salesdirector|usuários|
+|salesdirector|canais|
+|admin|usuários|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US16;"COMO usuário do Sistema
+QUERO recuperar minha senha
+PARA voltar a acessar o sistema";"Solicitar recuperação de senha
+Given que o usuário acesse o sistema
+When o usuário acessar a opção ""esqueci minha senha""
+And preencha um usuário válido
+Then o sistema envia uma notificação para o e-mail com o link de acesso.";"Recuperação de senha realizada com sucesso
+Given que o usuário acesse o link de recuperação de senha
+When o usuário informar a nova senha
+And confirmar a operação
+Then o sistema faz a validação das regras de nova senha e salva.";"Senhas diferentes
+Given que o usuário acesse o link de recuperação de senha
+When o usuário informar a nova senha
+And o sistema faz a validação das regras de nova senha ""RN005"", se não forem iguais
+Then apresenta a mensagem de erro impedindo que a operação obtenha sucesso.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário do Sistema
+QUERO recuperar minha senha
+PARA voltar a acessar o sistema.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que o usuário acesse o sistema <usuario>
+When o usuário acessar a opção ""esqueci minha senha"" <senha>
+And preencha um usuário válido <usuario>
+Then o sistema envia uma notificação para o e-mail com o link de acesso.
+
+Critério 2
+Given que o usuário acesse o link de recuperação de senha <usuario>
+When o usuário informar a nova senha <senha>
+And confirmar a operação
+Then o sistema faz a validação das regras de nova senha e salva.
+
+Critério 3
+Given que o usuário acesse o link de recuperação de senha <usuario>
+When o usuário informar a nova senha <senha>
+And o sistema faz a validação das regras de nova senha """"RN005"""", se não forem iguais
+Then apresenta a mensagem de erro impedindo que a operação obtenha sucesso.
+
+
+Examples:
+|usuário|senha|
+|igor|12345678|
+|antonio|ab1021!|
+|cesar|85204tj|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"""
+US17;"COMO usuário de Sales Director
+QUERO cadastrar novos canais dentro do sistema
+PARA acompanhar e gerenciar.";"Menu Canal
+Given o Sales Director
+When acionado a opção ""Canais"" no menu
+Then o sistema apresenta a tela com listagem de canais cadastradas. ";"Cadastro
+Given o Sales Director
+When acionado a opção ""Canais"" no menu
+And selecione a opção ""Cadastrar novo canal""
+Then realize o cadastro de novos canais.";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de Sales Director
+QUERO cadastrar novos canais dentro do sistema
+PARA acompanhar e gerenciar.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director <usuario>
+When acionado a opção ""Canais"" no menu <opção>
+Then o sistema apresenta a tela com listagem de canais cadastradas. 
+
+Critério 2
+Given o Sales Director <usuario>
+When acionado a opção ""Canais"" no menu <opção>
+And selecione a opção ""Cadastrar novo canal"" <opção>
+Then realize o cadastro de novos canais.
+
+Examples:
+|usuário|opção|
+|igor|canal|
+|antonio|novocanal!|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"""""""
+US18;"COMO usuário com permissionamento a lista de usuários
+QUERO poder utilizar filtros na lista
+PARA realizar busca de forma mais objetiva.";"Busca
+Given o Sales Director ou Admin Partner
+When escrevendo algo no campo de busca
+Then o sistema apresenta a listagem com os dados conforme a busca do usuário.";"Limpeza da busca
+Given o Sales Director ou Admin Partner
+When acionado após ter selecionado alguma opção do filtro
+And selecionando limpar filtro
+Then o sistema limpa a seleção que o usuário havia feito.";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário com permissionamento a lista de usuários
+QUERO poder utilizar filtros na lista
+PARA realizar busca de forma mais objetiva.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director ou Admin Partner <admin>
+When escrevendo algo no campo de busca <msg>
+Then o sistema apresenta a listagem com os dados conforme a busca do usuário.
+
+Critério 2
+Given o Sales Director ou Admin Partner <admin>
+When acionado após ter selecionado alguma opção do filtro <filtro>
+And selecionando limpar filtro
+Then o sistema limpa a seleção que o usuário havia feito.
+
+Examples:
+|admin|msg|filtro|
+|salesdirector|texto|semfiltro|
+|admin|alfanumerico|porano|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"""
+US19;"COMO Dono da oportunidade
+QUERO realizar solicitações no sistema
+PARA ganhar desconto.";"Solicitação
+Given Dono da oportunidade
+When acessando a oportunidade após estar aprovada
+And selecionando o produto que seja o desconto
+And justificando o motivo da solicitação
+Then o sistema irá enviar a notificação ao Sales director e deixará a solicitação com status de aguardando analise.";"Aprovando a solicitação
+Given Sales Director
+When recebendo a notificação da solicitação por e-mail
+And acessando a oportunidade
+And aprovando a solicitação
+And adicionando o valor que desejo dar o desconto e salvando a informação
+Then o sistema aplica o desconto extra por produto.";"Reprovando a solicitação
+Given Sales Director
+When acessando a oportunidade
+And clicando em reprovar a solicitação e justificando o motivo
+Then o sistema irá apresentar uma notificação dentro da oportunidade, com o motivo da reprovação e o status da solicitação.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Dono da oportunidade
+QUERO realizar solicitações no sistema
+PARA ganhar desconto.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given Dono da oportunidade <admin>
+When acessando a oportunidade após estar aprovada
+And selecionando o produto que seja o desconto <produto>
+And justificando o motivo da solicitação
+Then o sistema irá enviar a notificação ao Sales director e deixará a solicitação com status de aguardando analise.
+
+Critério 2
+Given Sales Director <admin>
+When recebendo a notificação da solicitação por e-mail
+And acessando a oportunidade
+And aprovando a solicitação
+And adicionando o valor que desejo dar o desconto e salvando a informação <valor>
+Then o sistema aplica o desconto extra por produto.
+
+Critério 3
+
+""Reprovando a solicitação
+Given Sales Director <admin>
+When acessando a oportunidade
+And clicando em reprovar a solicitação e justificando o motivo <motivo>
+Then o sistema irá apresentar uma notificação dentro da oportunidade, com o motivo da reprovação e o status da solicitação.
+
+Examples:
+|admin|produto|valor|motivo|
+|salesdirector|bolsa|desconto|texto|
+|admin|gloss|desconto|semestoque|
+|admin|lipbalm|desconto|texto|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"""
+US20;"COMO Sales Director
+QUERO poder aprovar e reprovar uma oportunidade
+PARA qualificar as melhores oportunidades e negociações.";"Analisando a oportunidade
+Given o Sales Director
+When clicando em oportunidades no menu
+And selecionando uma oportunidade com o status ""In Analysis"" da lista
+And analisar as informações cadastradas pelo dono da oportunidade
+Then o sistema deve disponibilizar a opção para aprovar ou reprovar a oportunidade";"Aprovar oportunidade
+Given o Sales Director
+When selecionando uma oportunidade com o status ""In Analysis"" da lista
+And visualizando todas as informações
+And clicando em aprovar
+Then o sistema deve alterar o status da oportunidade para ""Approved"" e encaminhar um e-mail de sucesso para o dono da oportunidade.";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Sales Director
+QUERO poder aprovar e reprovar uma oportunidade
+PARA qualificar as melhores oportunidades e negociações.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o Sales Director <admin>
+When clicando em oportunidades no menu <opção>
+And selecionando uma oportunidade com o status """"In Analysis"""" da lista
+And analisar as informações cadastradas pelo dono da oportunidade
+Then o sistema deve disponibilizar a opção para aprovar ou reprovar a oportunidade
+
+Critério 2
+Given o Sales Director <admin>
+When selecionando uma oportunidade com o status """"In Analysis"""" da lista
+And visualizando todas as informações
+And clicando em aprovar <oplçao>
+Then o sistema deve alterar o status da oportunidade para """"Approved"""" e encaminhar um e-mail de sucesso para o dono da oportunidade.
+
+Examples:
+|admin|opção|
+|salesdirector|oportunidade|
+|salesdirector|aprovado|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"""
+US21;"COMO usuário do sistema e dono da oportunidade
+Quero salvar uma oportunidade como draft
+PARA administrar as informações conforme a necessidade.";"Salvar a oportunidade como Draft
+Given o dono da oportunidade
+When clicando em Save Draft
+Then o sistema deve salvar a oportunidade como rascunho.";"Aba Draft
+Given o dono da oportunidade
+When clicando em oportunidades
+And selecionando a aba Draft
+Then o sistema deve apresentar todos as oportunidades que foram salvas como rascunho.";"Ações da listagem de Draft
+Given o dono da oportunidade
+When clicando em oportunidades
+And selecionando a aba Draft
+Then o sistema deve disponibilizar a ação de continuar e deletar.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário do sistema e dono da oportunidade
+Quero salvar uma oportunidade como draft
+PARA administrar as informações conforme a necessidade.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o dono da oportunidade <admin>
+When clicando em Save Draft <ação>
+Then o sistema deve salvar a oportunidade como rascunho.
+
+Critério 2
+Given o dono da oportunidade <admin>
+When clicando em oportunidades <ação>
+And selecionando a aba Draft <menu>
+Then o sistema deve apresentar todos as oportunidades que foram salvas como rascunho.
+
+Critério 3
+Given o dono da oportunidade <admin>
+When clicando em oportunidades
+And selecionando a aba Draft <menu>
+Then o sistema deve disponibilizar a ação de continuar e deletar.
+
+Examples:
+|admin|ação|menu|
+|admin|salvar|abadraft|
+|admin|clicar|aba|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"""
+US22;"COMO dono da oportunidade
+QUERO ter um resumo da oportunidade
+PARA validação de valores e uma possível proposta.";"Acessando o resumo da oportunidade
+Given o dono da oportunidade
+When clicando em oportunidades no menu
+And selecionando uma oportunidade da lista
+And avançando as etapas da oportunidade e estimativa, realizando o preenchimento dos campos
+Then o sistema deve apresentar a interface de resumo da oportunidade.";"Dados da oportunidade
+Given o dono da oportunidade
+When selecionando uma oportunidade
+And avançando até a parte do resumo (Overview)
+Then o deve ser apresentado dados sobre a oportunidade, responsavel, detalhes do produto, valores e comentários.";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO dono da oportunidade
+QUERO ter um resumo da oportunidade
+PARA validação de valores e uma possível proposta.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o dono da oportunidade <admin>
+When clicando em oportunidades no menu <menu>
+And selecionando uma oportunidade da lista
+And avançando as etapas da oportunidade e estimativa, realizando o preenchimento dos campos <texto>
+Then o sistema deve apresentar a interface de resumo da oportunidade.
+
+Critério 2
+Given o dono da oportunidade <admin>
+When selecionando uma oportunidade <menu>
+And avançando até a parte do resumo (Overview)
+Then o deve ser apresentado dados sobre a oportunidade, responsavel, detalhes do produto, valores e comentários.
+
+Examples:
+|admin|menu|texto|
+|donodaoportunidade|oportunidade1|dadospessoais|
+|donodaoportunidade|oportunidade2|dadosdoproduto|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"""
+US23;"COMO Dono da oportunidade
+QUERO enviar a oportunidade para análise de aprovação
+PARA que seja validado se a oportunidade receberá ou não descontos.";"Enviar a oportunidade para aprovação
+Given o dono da oportunidade
+When clicando em oportunidades no menu
+And selecionando uma oportunidade da lista
+And avançando as etapas da oportunidade e estimativa, realizando o preenchimento dos campos
+And acessando o resumo da oportunidade
+Then o sistema deve possibilitar o usuário de enviar a oportunidade para aprovação";"E-mail de notificação
+Given o dono da oportunidade
+And clicou na opção de enviar a oportunidade para aprovação
+Then deve ser enviado um e-mail para o Sales Director, informando que há um nova oportunidade registrada aguardando aprovação. ";"Ação do e-mail
+Given o Sales Director
+When acessou o e-mail de notificação de nova oportunidade registrada aguardando aprovação
+And clicou no link do e-mail
+Then o Sales director acessará o sistema";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Dono da oportunidade
+QUERO enviar a oportunidade para análise de aprovação
+PARA que seja validado se a oportunidade receberá ou não descontos.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given o dono da oportunidade <admin>
+When clicando em oportunidades no menu <opção>
+And selecionando uma oportunidade da lista
+And avançando as etapas da oportunidade e estimativa, realizando o preenchimento dos campos
+And acessando o resumo da oportunidade
+Then o sistema deve possibilitar o usuário de enviar a oportunidade para aprovação
+
+Critério 2
+Given o dono da oportunidade <admin>
+And clicou na opção de enviar a oportunidade para aprovação <opção>
+Then deve ser enviado um e-mail para o Sales Director, informando que há um nova oportunidade registrada aguardando aprovação.
+
+Critério 3
+Given o Sales Director <admin>
+When acessou o e-mail de notificação de nova oportunidade registrada aguardando aprovação
+And clicou no link do e-mail
+Then o Sales director acessará o sistema.
+
+Examples:
+|admin|opção|
+|donodaoportunidade|menu|
+|donodaoportunidade|oportunidades|
+|saledirector|novaoportunidade|
+
+""
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"""
+US24;"COMO Gerencia do Sistema
+QUERO visualizar informações das oportunidades
+PARA uma melhor tomada de decisão.";"Visualização da oportunidade
+Given o dono da oportunidade
+When clicando em oportunidades no menu
+And selecionando uma oportunidade da lista
+Then o sistema deve apresentar todas as informações cadastradas na oportunidade";"Dados da oportunidade
+Given o dono da oportunidade
+When clicando em oportunidades para visualizar a oportunidade
+Then o sistema deve apresentar dados do cliente, da oportunidade, da estimativa e os valores.";"Dados da oportunidade - Visualização do Sales Director
+Given o Sales Director
+When clicando em oportunidades para visualizar a oportunidade
+Then o sistema deve apresentar dados do canal, dados do cliente, da oportunidade, da estimativa e os valores. ";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerencia do Sistema
+QUERO uma listagem dos canais
+PARA que seja possível visualizar e gerenciar os canais que já foram cadastrados no sistema.""
+
+e nos critérios de aceites
+
+""
+
+Critério 1
+Given o dono da oportunidade
+When clicando em oportunidades no menu
+And selecionando uma oportunidade da lista
+Then o sistema deve apresentar todas as informações cadastradas na oportunidade
+
+Critério 2
+Given o dono da oportunidade
+When clicando em oportunidades para visualizar a oportunidade
+Then o sistema deve apresentar dados do cliente, da oportunidade, da estimativa e os valores.
+
+Critério 3
+Given o Sales Director
+When clicando em oportunidades para visualizar a oportunidade
+Then o sistema deve apresentar dados do canal, dados do cliente, da oportunidade, da estimativa e os valores.
+
+""
+
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US25;"COMO Gerente de canais
+QUERO Acompanhar as oportunidades do sistema
+PARA Garantir que evite conflito entre canais.";"Menu e Listagem
+Given que o Sales Director
+When acionado o menu oportunidade
+Then o sistema apresenta a tela com listagem de oportunidades cadastradas.";"Visualização de detalhes
+Given que o sistema apresente listagem
+When acionado mais detalhes
+Then o sistema apresenta a tela com todos os dados adicionados pelo usuário.";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Gerente de canais
+QUERO Acompanhar as oportunidades do sistema
+PARA Garantir que evite conflito entre canais.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que o Sales Director
+When acionado o menu oportunidade
+Then o sistema apresenta a tela com listagem de oportunidades cadastradas.
+
+Critério 2
+Given que o sistema apresente listagem
+When acionado mais detalhes
+Then o sistema apresenta a tela com todos os dados adicionados pelo usuário.
+
+""
+
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US26;"COMO Agente de Pré-Vendas de canal parceiro
+QUERO Cadastrar oportunidades no sistema
+PARA Evitar conflito com outros canais, acompanhar/gerenciar o processo de venda. ";"Menu e Listagem
+Given que o usuário do canal
+When acionado o menu oportunidade
+Then o sistema apresenta a tela com listagem de oportunidades cadastradas.";"Cadastro de novos oportunidades
+Given que disponibilizado listagem
+When acionado cadastrar nova oportunidade
+Then o sistema apresenta a tela com campos para o usuário preencher.";"Listagem de oportunidades
+Given que o sistema apresente a listagem
+When acionado mais detalhes
+Then o sistema apresenta a tela com todos os dados adicionados pelo usuário do canal.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Agente de Pré-Vendas de canal parceiro
+QUERO Cadastrar oportunidades no sistema
+PARA Evitar conflito com outros canais, acompanhar/gerenciar o processo de venda. ""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que o usuário do canal
+When acionado o menu oportunidade
+Then o sistema apresenta a tela com listagem de oportunidades cadastradas.
+
+Critério 2
+Given que disponibilizado listagem
+When acionado cadastrar nova oportunidade
+Then o sistema apresenta a tela com campos para o usuário preencher.
+
+Critério 3
+Given que o sistema apresente a listagem
+When acionado mais detalhes
+Then o sistema apresenta a tela com todos os dados adicionados pelo usuário do canal.
+
+""
+
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US27;"COMO usuário dono da oportunidade
+QUERO realizar a estimativa dos produtos
+PARA validar os valores dar fluxo no processo.";"Criando uma estimativa
+Given dono da oportunidade
+When criando uma oportunidade
+Then consigo criar uma estimativa dos produtos selecionados.";"Selecionando o pagamento
+Given dono da oportunidade
+When criando uma oportunidade
+And ao realizar a estimativa
+Then consigo realizar a definição do pagamento.";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário dono da oportunidade
+QUERO realizar a estimativa dos produtos
+PARA validar os valores dar fluxo no processo.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given dono da oportunidade
+When criando uma oportunidade
+Then consigo criar uma estimativa dos produtos selecionados.
+
+Critério 2
+Given dono da oportunidade
+When criando uma oportunidade
+And ao realizar a estimativa
+Then consigo realizar a definição do pagamento.
+
+""
+
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US28;"COMO usuário de gerenciamento da oportunidade
+QUERO acessar a oportunidade e excluir algo que foi selecionado
+PARA ajustar as informações caso necessário.";"Editando um item da estimativa
+Given usuário com permissionamento ao cadastro da oportunidade
+When abrindo a oportunidade
+And acessando a estimativa
+And selecionando a opção de editar
+Then o sistema habilita os campos do item selecionado, para serem alterados.";"Salvando a alteração
+Given usuário com permissionamento ao cadastro da oportunidade
+When editando um item da estimativa
+And selecionando a opção para salvar as alterações
+Then o sistema gera alerta de sucesso.";"Deletando um item cadastrado na estimativa
+Given usuário com permissionamento ao cadastro da oportunidade
+When selecionando a opção deletar
+Then o sistema remove o item.";"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO usuário de gerenciamento da oportunidade
+QUERO acessar a oportunidade e excluir algo que foi selecionado
+PARA ajustar as informações caso necessário.""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given usuário com permissionamento ao cadastro da oportunidade
+When abrindo a oportunidade
+And acessando a estimativa
+And selecionando a opção de editar
+Then o sistema habilita os campos do item selecionado, para serem alterados.
+
+Critério 2
+Given usuário com permissionamento ao cadastro da oportunidade
+When editando um item da estimativa
+And selecionando a opção para salvar as alterações
+Then o sistema gera alerta de sucesso.
+
+Critério 3
+Given usuário com permissionamento ao cadastro da oportunidade
+When selecionando a opção deletar
+Then o sistema remove o item.
+
+""
+
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US29;"COMO Usuário do sistema
+QUERO ser capaz acompanhar a quantidade de alertas por dia e mês
+PARA ter melhor visão sobre como anda a segurança e o período de maior problema";"Acompanhar os alertas por dia
+Given que eu esteja logado
+When eu abrir o dashboard
+Then vou visualizar um gráfico número de alertas por dia do mês";"Acompanhar os alertas por Mês
+Given que eu esteja logado
+When eu abrir o dashboard
+Then vou visualizar um gráfico número de alertas por mês do ano";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO Usuário do sistema
+QUERO ser capaz acompanhar a quantidade de alertas por dia e mês
+PARA ter melhor visão sobre como anda a segurança e o período de maior problema""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que eu esteja logado
+When eu abrir o dashboard
+Then vou visualizar um gráfico número de alertas por dia do mês
+
+Critério 2
+Given que eu esteja logado
+When eu abrir o dashboard
+Then vou visualizar um gráfico número de alertas por mês do ano
+
+""
+
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
+US30;"COMO analista de redes
+QUERO acessar o dashboard do NDR
+PARA análisar dados relacionados ao fluxo de redes";"Análisar origem e destino dos pacotes
+Given que eu esteja na tela do dashboard do NDR
+When tiver dados relacionados a fluxo de redes
+Then consigo saber a origem e a destino dos pacotes em um mapa do mundo";"Acompanhar alertas
+Given eu esteja na tela do dashboard do NDR
+When ocorrer um alerta
+Then consigo verificar os alertas para identificar as ocorrencias na rede";;"Você é um analista de teste, responsável pela criação de testes unitários, com base na história de usuário 
+
+""COMO analista de redes
+QUERO acessar o dashboard do NDR
+PARA análisar dados relacionados ao fluxo de redes""
+
+e nos critérios de aceites
+
+""
+Critério 1
+Given que eu esteja na tela do dashboard do NDR
+When tiver dados relacionados a fluxo de redes
+Then consigo saber a origem e a destino dos pacotes em um mapa do mundo
+
+Critério 2
+Given eu esteja na tela do dashboard do NDR
+When ocorrer um alerta
+Then consigo verificar os alertas para identificar as ocorrencias na rede
+
+""
+
+baseados no gherking, crie os testes unitários, implemente os testes com os asserts e a com a lógica de teste pensando em test first, para a linguagem de programação python baseados no framework Pytest-bdd e explique como usar o código"
