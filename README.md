@@ -34,4 +34,8 @@ O AutoDevSuite é a escolha ideal para desenvolvedores e equipes que buscam otim
 
 Veja a demonstração da aplicação [aqui](https://autodevsuite-bdd.streamlit.app/).
 
+### Futuro do AutoDevSuite
+
+Implementar a avaliação de US
+
 
