@@ -2,6 +2,7 @@
 
 **AutoDevSuite** é uma poderosa ferramenta de automação para desenvolvimento de software, construída utilizando Streamlit, Python, LangChain e modelos de linguagem (LLM). Esta solução foi projetada para transformar histórias de usuários e critérios de aceitação escritos no padrão Gherkin em testes automatizados e outros recursos essenciais para o desenvolvimento de software.
 
+
 ### Funcionalidades Principais
 
 - **Geração Automatizada de Testes:** A partir de histórias de usuários e critérios de aceitação no formato Gherkin, o AutoDevSuite gera testes unitários automatizados, aumentando a cobertura de testes e garantindo a qualidade do software.
