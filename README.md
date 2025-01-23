@@ -5,6 +5,7 @@
 
 ### Funcionalidades Principais
 
+
 - **Geração Automatizada de Testes:** A partir de histórias de usuários e critérios de aceitação no formato Gherkin, o AutoDevSuite gera testes unitários automatizados, aumentando a cobertura de testes e garantindo a qualidade do software.
 - **Compatibilidade Multilinguagem:** Embora atualmente esteja em uso com Python e frameworks como pytest-bdd e behave, o AutoDevSuite é projetado para suportar qualquer linguagem de programação e framework de testes.
 - **Integração de Modelos de Linguagem:** Utiliza modelos de linguagem de grande escala (LLM) para processar e interpretar as especificações fornecidas, facilitando a automação e permitindo a troca simplificada entre modelos pagos e gratuitos.
