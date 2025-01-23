@@ -36,6 +36,6 @@ Veja a demonstração da aplicação [aqui](https://autodevsuite-bdd.streamlit.a
 
 ### Futuro do AutoDevSuite
 
-Implementar a avaliação de US e seus critérios de aceite.
+Implementar a avaliação de US e seus critérios de aceite, baseado no trabalho de Oliveira.
 
 
